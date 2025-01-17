@@ -1,0 +1,257 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    outline: none;
+    border: none;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    text-decoration: none;
+}
+
+::root {
+    --main-color: #615fff;
+    --second-color: #f1f1f1;
+    --third-color: #333;
+}
+
+body {
+    background-color: #f1f1f1;
+}
+
+.i {
+    cursor: pointer;
+}
+
+.player {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.player.full-screen {
+    width: 100%;
+    max-width: 100%;
+}
+
+video {
+    aspect-ratio: 16/9;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.wrapper {
+    display: flex;
+    position: fixed;
+    bottom: 20px;
+    align-items: center;
+    transform: scale(0.9);
+    z-index: 100;
+    border: 2px solid #adadad1a;
+    border-radius: 15px;
+    background: #0f172a;
+    padding: 10px 20px;
+    width: 60%;
+    color: #f1f1f1;
+    font-size: 0.85em;
+}
+
+.wrapper .controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.line {
+    margin: 0 10px;
+    background: #adadad1a;
+    width: 1.5px;
+    height: 36px;
+}
+
+.wrapper .controls .media-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.wrapper .controls .media-controls .play {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 50px;
+    background: #223561;
+    padding: 16px 19px;
+    font-size: 18px;
+}
+
+.wrapper .controls .media-controls .play i {
+    width: 12px;
+}
+
+.timeline {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.time {
+    width: 35px;
+}
+
+.progress-area {
+    position: relative;
+    cursor: pointer;
+    margin: 0 20px;
+    border-radius: 10px;
+    background: #8b8b8b40;
+    width: 460px;
+    height: 6px;
+}
+
+.progress-bar {
+    position: absolute;
+    transition: 0.2s;
+    border-radius: 10px;
+    background: #615fff;
+    width: 0%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.progress-bar::before {
+    position: absolute;
+    top: -145%;
+    left: 99%;
+    border: 3px solid #0f172a;
+    border-radius: 10px;
+    background: #615fff;
+    width: 5px;
+    height: 20px;
+    content: "";
+}
+
+.panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: -5px;
+}
+
+.setting {
+    position: relative;
+}
+
+.preferences {
+    display: flex;
+    position: absolute;
+    right: 355px;
+    bottom: 95px;
+    flex-direction: column;
+    gap: 10px;
+    opacity: 0;
+    transition: 0.2s;
+    border: 2px solid #adadad1a;
+    border-radius: 12px;
+    background: #0f172a;
+    padding: 10px;
+    width: 200px;
+    pointer-events: none;
+}
+
+.preferences.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.preferences button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+    cursor: pointer;
+    border-radius: 10px;
+    background: transparent;
+    padding: 8px 8px;
+    width: 100%;
+    color: #f1f1f1;
+    font-size: 0.8em;
+    text-align: left;
+}
+
+.preferences button:hover {
+    background: #1a294d93;
+}
+
+.preferences button svg {
+    margin-left: 4px;
+    width: 20px;
+}
+
+.volume-media {
+    display: flex;
+    position: absolute;
+    right: 355px;
+    bottom: 95px;
+    align-items: center;
+    gap: 10px;
+    transition: 0.2s;
+    border: 2px solid #adadad1a;
+    border-radius: 12px;
+    background: #0f172a;
+    padding: 18px 16px;
+    color: #f1f1f1;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.volume-media.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.volume-area {
+    position: relative;
+    cursor: pointer;
+    border-radius: 10px;
+    background: #8b8b8b40;
+    width: 150px;
+    height: 6px;
+}
+
+.volume-bar {
+    position: absolute;
+    transition: 0.2s;
+    border-radius: 10px;
+    background: #615fff;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.volume-bar::before {
+    position: absolute;
+    top: -145%;
+    left: 99%;
+    border: 3px solid #0f172a;
+    border-radius: 10px;
+    background: #615fff;
+    width: 5px;
+    pointer-events: none;
+    height: 20px;
+    content: "";
+}
+
+.volume-media span {
+    font-size: 0.85em;
+    width: 25px;
+    margin-left: 2px;
+}
+
+.volume-media .volume-icon svg {
+    display: flex;
+    width: 20px;
+}

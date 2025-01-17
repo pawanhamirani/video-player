@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script
+            src="https://kit.fontawesome.com/582d8f71bf.js"
+            crossorigin="anonymous"
+        ></script>
+        <link rel="stylesheet" href="./style.css" />
+        <title>Prime Player | Dev</title>
+    </head>
+    <body>
+        <div class="player">
+            <div class="wrapper">
+                <div class="controls">
+                    <div class="media-controls">
+                        <div class="i rewind">
+                            <i data-lucide="Undo2"></i>
+                        </div>
+                        <div class="i play">
+                            <i class="fa-solid fa-play"></i>
+                        </div>
+                        <div class="i forward">
+                            <i data-lucide="Redo2"></i>
+                        </div>
+                    </div>
+                    <span class="line"></span>
+                    <div class="timeline">
+                        <span class="current-time time">00:00</span>
+                        <div class="progress-area">
+                            <div class="progress-bar"></div>
+                        </div>
+                        <span class="total-time time">00:00</span>
+                    </div>
+                    <span class="line"></span>
+                    <div class="panel">
+                        <div class="i vol-media" id="vol">
+                            <i data-lucide="Volume2" id="vol"></i>
+                        </div>
+                        <div class="i setting">
+                            <i data-lucide="Settings" id="setting-icon"></i>
+                        </div>
+                        <div class="i full-screen">
+                            <i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="Maximize" id="full-screenID" class="lucide lucide-Maximize"><path d="M8 3H5a2 2 0 0 0-2 2v3"></path><path d="M21 8V5a2 2 0 0 0-2-2h-3"></path><path d="M3 16v3a2 2 0 0 0 2 2h3"></path><path d="M16 21h3a2 2 0 0 0 2-2v-3"></path></svg>
+                            </i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <video src="./media/video.mp4"></video>
+            <div class="box">
+                <div class="preferences">
+                    <button>
+                        <i data-lucide="cloud-upload"></i>
+                        <span>Upload Video</span>
+                    </button>
+                    <button>
+                        <i data-lucide="picture-in-picture"></i>
+                        <span>Picture In Picture</span>
+                    </button>
+                    <button>
+                        <i data-lucide="gauge"></i>
+                        <span>Playback Speed</span>
+                    </button>
+                </div>
+                <div class="volume-media">
+                    <div class="i volume-icon"">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="Volume2" id="vol" class="lucide lucide-Volume2"><path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z"></path><path d="M16 9a5 5 0 0 1 0 6"></path><path d="M19.364 18.364a9 9 0 0 0 0-12.728"></path></svg>
+                    </div>
+                    <div class="volume-area">
+                        <div class="volume-bar"></div>
+                    </div>
+                    <span>100%</span>
+                </div>
+            </div>
+        </div>
+        <script src="https://unpkg.com/lucide@latest"></script>
+        <script src="./script.js"></script>
+        <script>
+            lucide.createIcons();
+        </script>
+    </body>
+</html>
