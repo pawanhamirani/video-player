@@ -165,3 +165,4 @@ volumeIconBtn.addEventListener("click", () => {
     }
     muted = !muted;
 });
+

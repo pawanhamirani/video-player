@@ -255,3 +255,24 @@ video {
     display: flex;
     width: 20px;
 }
+
+.speed-media{
+    display: flex;
+    position: absolute;
+    right: -1px;
+    bottom: -1px;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    transition: 0.2s;
+    border: 2px solid #adadad1a;
+    border-radius: 12px;
+    background: #0f172a;
+    padding: 16px 14px;
+    color: #f1f1f1;
+}
+
+.speed-media button{
+    width: 200px;
+}
+
