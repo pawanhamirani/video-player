@@ -167,7 +167,7 @@ video {
     pointer-events: auto;
 }
 
-.preferences button {
+.preferences button,#upload{
     display: flex;
     align-items: center;
     gap: 8px;
@@ -182,11 +182,11 @@ video {
     text-align: left;
 }
 
-.preferences button:hover {
+.preferences button:hover ,#upload:hover{
     background: #1a294d93;
 }
 
-.preferences button svg {
+.preferences button svg ,#upload svg{
     margin-left: 4px;
     width: 20px;
 }
@@ -272,7 +272,7 @@ video {
     color: #f1f1f1;
 }
 
-.speed-media button{
-    width: 200px;
+.speed-media {
+    width: 220px;
+    padding: 8px;
 }
-

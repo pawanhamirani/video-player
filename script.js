@@ -16,6 +16,28 @@ let preferences = document.querySelector(".preferences");
 let volumeBtn = document.querySelector("#vol");
 let volumeMedia = document.querySelector(".volume-media");
 let volumeIconBtn = document.querySelector(".volume-media .volume-icon");
+let uploadBtn = document.querySelector("#upload");
+let uploadInput = document.querySelector("#uploadInput");
+let picInPicBtn = document.querySelector("#picInPic");
+
+// keyboard shortcuts
+document.addEventListener("keydown", (e) => {
+    if (e.key === " ") {
+        playPause();
+    } else if (e.key === "ArrowLeft") {
+        video.currentTime -= 5;
+    } else if (e.key === "ArrowRight") {
+        video.currentTime += 5;
+    } else if (e.key === "f") {
+        fullScreenBtn.click();
+    } else if (e.key === "m") {
+        volumeIconBtn.click();
+    } else if (e.key === "Escape") {
+        if (fullscreen) {
+            fullScreenBtn.click();
+        }
+    }
+});
 
 // Info: Play & Pause Button Functionality
 
@@ -33,6 +55,19 @@ playPauseBtn.addEventListener("click", () => {
     }
 });
 
+function playPause() {
+    if (video.paused) {
+        video.play();
+        playPauseBtn
+            .querySelector("i")
+            .classList.replace("fa-play", "fa-pause");
+    } else {
+        video.pause();
+        playPauseBtn
+            .querySelector("i")
+            .classList.replace("fa-pause", "fa-play");
+    }
+}
 // Info: Time Formatting Functionality
 
 function formatTime(time) {
@@ -66,6 +101,10 @@ video.addEventListener("timeupdate", () => {
     let value = (video.currentTime / video.duration) * 100;
     progressBar.style.width = `${value}%`;
 });
+
+function timeLoad(){
+    totalTimeDisplay.textContent = formatTime(video.duration);
+}
 
 // Info: Progress Bar Click Functionality
 
@@ -166,3 +205,23 @@ volumeIconBtn.addEventListener("click", () => {
     muted = !muted;
 });
 
+uploadInput.addEventListener("change", () => {
+    let file = uploadInput.files[0];
+    let reader = new FileReader();
+    reader.onload = () => ((video.src = reader.result), playPause(),
+    video.addEventListener('loadedmetadata', () => {
+        timeLoad();
+      })
+);
+    reader.readAsDataURL(file);
+    settingBtn.click();
+});
+
+// picture in picture functionality
+picInPicBtn.addEventListener("click", () => {
+    if (document.pictureInPictureElement) {
+        document.exitPictureInPicture();
+    } else {
+        video.requestPictureInPicture();
+    }
+});

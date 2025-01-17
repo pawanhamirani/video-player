@@ -70,11 +70,12 @@
             <video src="./media/video.mp4"></video>
             <div class="box">
                 <div class="preferences">
-                    <button>
+                    <input type="file" id="uploadInput" hidden>
+                    <label id="upload" for="uploadInput">
                         <i data-lucide="cloud-upload"></i>
                         <span>Upload Video</span>
-                    </button>
-                    <button>
+                    </label>
+                    <button id="picInPic">
                         <i data-lucide="picture-in-picture"></i>
                         <span>Picture In Picture</span>
                     </button>
@@ -82,44 +83,7 @@
                         <i data-lucide="gauge"></i>
                         <span>Playback Speed</span>
                     </button>
-                    <div class="speed-media">
-                        <button>
-                            <i data-lucide="undo-2"></i>
-                            <span>Back</span>
-                        </button>
-                        <button>
-                            <input type="radio" />
-                            <span>0.25</span>
-                        </button>
-                        <button>
-                            <input type="radio" />
-                            <span>0.5</span>
-                        </button>
-                        <button>
-                            <input type="radio" />
-                            <span>0.75</span>
-                        </button>
-                        <button>
-                            <input type="radio" />
-                            <span>Normal</span>
-                        </button>
-                        <button>
-                            <input type="radio" />
-                            <span>1.25</span>
-                        </button>
-                        <button>
-                            <input type="radio" />
-                            <span>1.5</span>
-                        </button>
-                        <button>
-                            <input type="radio" />
-                            <span>1.75</span>
-                        </button>
-                        <button>
-                            <input type="radio" />
-                            <span>2</span>
-                        </button>
-                    </div>
+                    <div class="speed-media"></div>
                 </div>
                 <div class="volume-media">
                     <div class="i volume-icon">
