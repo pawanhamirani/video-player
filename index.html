@@ -70,7 +70,7 @@
             <video src="./media/video.mp4"></video>
             <div class="box">
                 <div class="preferences">
-                    <input type="file" id="uploadInput" hidden>
+                    <input type="file" id="uploadInput" hidden />
                     <label id="upload" for="uploadInput">
                         <i data-lucide="cloud-upload"></i>
                         <span>Upload Video</span>
@@ -79,11 +79,124 @@
                         <i data-lucide="picture-in-picture"></i>
                         <span>Picture In Picture</span>
                     </button>
-                    <button>
+                    <button id="loop">
+                        <i data-lucide="repeat"></i>
+                        <span>Loop</span>
+                    </button>
+                    <button class="speed-btn">
                         <i data-lucide="gauge"></i>
                         <span>Playback Speed</span>
                     </button>
-                    <div class="speed-media"></div>
+                    <div class="playback-media">
+                        <div class="back">
+                            <i data-lucide="Undo2"></i>
+                            <span>Back</span>
+                        </div>
+                        <div class="speed-options">
+                            <li data-speed="0.25">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="lucide lucide-check"
+                                >
+                                    <path d="M20 6 9 17l-5-5" />
+                                </svg>
+                                0.25x
+                            </li>
+                            <li data-speed="0.5">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="lucide lucide-check"
+                                >
+                                    <path d="M20 6 9 17l-5-5" />
+                                </svg>
+                                0.5x
+                            </li>
+                            <li data-speed="1" class="active">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="lucide lucide-check"
+                                >
+                                    <path d="M20 6 9 17l-5-5" />
+                                </svg>
+                                Normal
+                            </li>
+                            <li data-speed="1.25">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="lucide lucide-check"
+                                >
+                                    <path d="M20 6 9 17l-5-5" />
+                                </svg>
+                                1.25x
+                            </li>
+                            <li data-speed="1.5">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="lucide lucide-check"
+                                >
+                                    <path d="M20 6 9 17l-5-5" />
+                                </svg>
+                                1.5x
+                            </li>
+                            <li data-speed="2">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="lucide lucide-check"
+                                >
+                                    <path d="M20 6 9 17l-5-5" />
+                                </svg>
+                                2x
+                            </li>
+                        </div>
+                    </div>
                 </div>
                 <div class="volume-media">
                     <div class="i volume-icon">
