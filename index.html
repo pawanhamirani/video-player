@@ -12,7 +12,7 @@
     </head>
     <body>
         <div class="player">
-            <div class="wrapper">
+            <div class="wrapper show-controls">
                 <div class="controls">
                     <div class="media-controls">
                         <div class="i rewind">
@@ -32,6 +32,13 @@
                             <div class="progress-bar"></div>
                         </div>
                         <span class="total-time time">00:00</span>
+                        <div class="hover-video">
+                            <video
+                                id="hoveredVideo"
+                                src="./media/video.mp4"
+                            ></video>
+                            <span class="hover-time">00:00</span>
+                        </div>
                     </div>
                     <span class="line"></span>
                     <div class="panel">
@@ -67,9 +74,9 @@
                     </div>
                 </div>
             </div>
-            <video src="./media/video.mp4"></video>
+            <video id="video" src="./media/video.mp4"></video>
             <div class="box">
-                <div class="preferences">
+                <ul class="preferences">
                     <input type="file" id="uploadInput" hidden />
                     <label id="upload" for="uploadInput">
                         <i data-lucide="cloud-upload"></i>
@@ -197,8 +204,8 @@
                             </li>
                         </div>
                     </div>
-                </div>
-                <div class="volume-media">
+                </ul>
+                <ul class="volume-media">
                     <div class="i volume-icon">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -225,7 +232,7 @@
                         <div class="volume-bar"></div>
                     </div>
                     <span>100%</span>
-                </div>
+                </ul>
             </div>
         </div>
         <script src="https://unpkg.com/lucide@latest"></script>

@@ -1,4 +1,8 @@
-let video = document.querySelector("video");
+let video = document.querySelector("#video");
+let wrapper = document.querySelector(".wrapper");
+let hoveredVideo = document.querySelector("#hoveredVideo");
+let hoveredTime = document.querySelector(".hover-time");
+let showVideo = document.querySelector(".hover-video");
 let player = document.querySelector(".player");
 let playPauseBtn = document.querySelector(".media-controls .play");
 let currentTimeDisplay = document.querySelector(".current-time");
@@ -18,11 +22,34 @@ let volumeMedia = document.querySelector(".volume-media");
 let speedBtn = document.querySelector(".speed-btn");
 let speedBackBtn = document.querySelector(".back");
 let speedOptions = document.querySelector(".speed-options");
-let playbackMedia= document.querySelector(".playback-media");
+let playbackMedia = document.querySelector(".playback-media");
 let volumeIconBtn = document.querySelector(".volume-media .volume-icon");
 let uploadBtn = document.querySelector("#upload");
 let uploadInput = document.querySelector("#uploadInput");
+let downloadBtn = document.querySelector("#downloadBtn");
 let picInPicBtn = document.querySelector("#picInPic");
+
+// Info: Hide Video Controls Fuctionality
+
+let timer;
+const hideControls = () => {
+    if (video.paused) return;
+    timer = setTimeout(() => {
+        wrapper.classList.remove("show-controls");
+        volumeMedia.classList.remove("active");
+        preferences.classList.remove("active");
+    }, 3000);
+};
+hideControls();
+
+player.addEventListener("mousemove", () => {
+    wrapper.classList.add("show-controls");
+    clearTimeout(timer);
+    hideControls();
+});
+
+// make abtn
+
 
 // keyboard shortcuts
 document.addEventListener("keydown", (e) => {
@@ -106,7 +133,7 @@ video.addEventListener("timeupdate", () => {
     progressBar.style.width = `${value}%`;
 });
 
-function timeLoad(){
+function timeLoad() {
     totalTimeDisplay.textContent = formatTime(video.duration);
 }
 
@@ -164,12 +191,7 @@ volumeBtn.addEventListener("click", () => {
     if (preferences.classList.contains("active")) {
         preferences.classList.remove("active");
     }
-    volumeMediaTimeout = setTimeout(() => {
-        volumeMedia.classList.remove("active");
-    }, 4000);
 });
-
-
 
 volume.addEventListener("click", (e) => {
     let value = e.offsetX / volume.clientWidth;
@@ -177,7 +199,6 @@ volume.addEventListener("click", (e) => {
     volumeText.textContent = `${Math.floor(value * 100)}%`;
     volumeBar.style.width = `${value * 100}%`;
 });
-
 
 // Video muted functionality
 
@@ -203,11 +224,14 @@ volumeIconBtn.addEventListener("click", () => {
 uploadInput.addEventListener("change", () => {
     let file = uploadInput.files[0];
     let reader = new FileReader();
-    reader.onload = () => ((video.src = reader.result), playPause(),
-    video.addEventListener('loadedmetadata', () => {
-        timeLoad();
-      })
-);
+    reader.onload = () => (
+        (video.src = reader.result),
+        (hoveredVideo.src = reader.result),
+        playPause(),
+        video.addEventListener("loadedmetadata", () => {
+            timeLoad();
+        })
+    );
     reader.readAsDataURL(file);
     settingBtn.click();
 });
@@ -258,11 +282,11 @@ document.addEventListener("wheel", (e) => {
         e.preventDefault(); // Prevent page scrolling
         const delta = e.deltaY;
         const currentVolume = video.volume;
-        let newVolume = currentVolume - (delta * 0.001); // Adjust 0.001 for sensitivity
+        let newVolume = currentVolume - delta * 0.001; // Adjust 0.001 for sensitivity
 
         // Ensure volume stays within 0-1 range
         newVolume = Math.max(0, Math.min(1, newVolume));
-        
+
         updateVolume(newVolume);
     }
 });
@@ -279,23 +303,40 @@ function updateVolume(value) {
     } else {
         volumeIconBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="Volume2" id="vol" class="lucide lucide-Volume2"><path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z"></path><path d="M16 9a5 5 0 0 1 0 6"></path><path d="M19.364 18.364a9 9 0 0 0 0-12.728"></path></svg>`;
         muted = false;
-
     }
 }
 
 // Info: Playback Speed Functionality
 
-speedBtn.addEventListener('click', ()=>{
-    playbackMedia.classList.add('active');
-})
-speedBackBtn.addEventListener('click', ()=>{
-    playbackMedia.classList.remove('active');
-})
+speedBtn.addEventListener("click", () => {
+    playbackMedia.classList.add("active");
+});
+speedBackBtn.addEventListener("click", () => {
+    playbackMedia.classList.remove("active");
+});
 
-speedOptions.querySelectorAll('li').forEach(option=>{
-    option.addEventListener('click', ()=>{
+speedOptions.querySelectorAll("li").forEach((option) => {
+    option.addEventListener("click", () => {
         video.playbackRate = parseFloat(option.dataset.speed);
-        speedOptions.querySelector(".active").classList.remove('active');
-        option.classList.add('active');
-    })
-})
+        speedOptions.querySelector(".active").classList.remove("active");
+        option.classList.add("active");
+    });
+});
+
+// Info: Progress Hover Show Video Duration Functionality
+
+progress.addEventListener("mousemove", (e) => {
+    let offsetX = e.offsetX;
+    showVideo.style.left = `${offsetX}px`;
+    showVideo.style.opacity = 1;
+
+    let width = e.target.clientWidth;
+    hoveredVideo.currentTime = (e.offsetX / width) * video.duration;
+    let videoTime = (e.offsetX / width) * video.duration;
+    hoveredTime.textContent = formatTime(videoTime);
+});
+progress.addEventListener("mouseout", (e) => {
+    showVideo.style.opacity = 0;
+});
+
+// Info: Video Click Play P
