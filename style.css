@@ -353,7 +353,8 @@ video {
     flex-direction: column;
     align-items: center;
     border-radius: 12px;
-    transition: 0.1s;
+    transition: 0.05s;
+    box-shadow: 0 0 5px #111;
     opacity: 0;
 }
 

@@ -228,8 +228,11 @@ uploadInput.addEventListener("change", () => {
         (video.src = reader.result),
         (hoveredVideo.src = reader.result),
         playPause(),
-        video.addEventListener("loadedmetadata", () => {
+        video.addEventListener("loadedmetadata", (e) => {
             timeLoad();
+            // if(video)
+            console.log(e);
+            
         })
     );
     reader.readAsDataURL(file);
@@ -338,5 +341,3 @@ progress.addEventListener("mousemove", (e) => {
 progress.addEventListener("mouseout", (e) => {
     showVideo.style.opacity = 0;
 });
-
-// Info: Video Click Play P
